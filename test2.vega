@@ -1,0 +1,34 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 500,
+    "title": "Mass Shootings in the US for the Past 50 Years",
+    "projection": {"type": "albersUsa"},
+    "layer": [
+    {
+    "data": {
+    "url":
+   "https://raw.githubusercontent.com/vega/vega/master/docs/data/us-10m.json",
+    "format": {"type": "topojson", "feature": "states"}
+    },
+    "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+    "data": {
+    "url": "shoot.csv"
+    },
+    "mark": {"type": "circle", "color": "darkred", "opacity":0.55},
+   
+    "encoding": {
+    "longitude": {"field": "Longitude", "type": "quantitative"},
+    "latitude": {"field": "Latitude", "type": "quantitative"},
+    "size": {
+    "field": "total",
+    "type": "quantitative",
+    "scale": {"domain": [2, 105]}
+    }
+
+    }
+    }
+    ]
+   }
